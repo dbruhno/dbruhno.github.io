@@ -1,7 +1,15 @@
 theme: jekyll-theme-merlot
-title: Try some pages.
+title: "Try some pages."
 description: Bookmark this to keep an eye on my project updates!
 
 layout: page
-title: "About"
+title: "Test page"
 permalink: /about
+
+layout: page
+title: "Terms"
+permalink: /terms
+
+layout: page
+title: "Remove"
+permalink: /remove

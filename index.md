@@ -1,3 +1,7 @@
 # This is index
 
-Try [about](https://dbruhno.github.io/about)
+[About](https://dbruhno.github.io/about)
+
+[Terms](https://dbruhno.github.io/terms)
+
+[Remove](https://dbruhno.github.io/remove)
