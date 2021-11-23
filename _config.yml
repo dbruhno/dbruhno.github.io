@@ -2,11 +2,20 @@ theme: jekyll-theme-merlot
 title: "dbruhno"
 description: Bookmark this to keep an eye on my project updates!
 
+---
 layout: page
+title: "About"
 permalink: /about
+---
 
+---
 layout: page
+title: "Terms"
 permalink: /terms
+---
 
+---
 layout: page
+title: "Remove"
 permalink: /remove
+---
