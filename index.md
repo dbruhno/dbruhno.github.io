@@ -1,3 +1,3 @@
-layout: page
-title: "Theme test"
-permalink: /index.html
+# This is index
+
+Try [about](https://dbruhno.github.io/about)
