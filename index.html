@@ -11,30 +11,25 @@
                     lab.innerHTML = "Got it!";
                 }
                 else {
-                    lab.innerHTML = result;
-                }
-            }
-            function paramForName(sParam) {
-                var sPageURL = window.location.search.substring(1);
-                var sURLVariables = sPageURL.split('&');
-                for (var i = 0; i < sURLVariables.length; i++)
-                {
-                    var sParameterName = sURLVariables[i].split('=');
-                    if (sParameterName[0] == sParam)
-                    {
-                        return sParameterName[1];
+                    var str = ""
+                    for(var key in result) {
+                        str += key + " : " + result[key] + '\r\n'
                     }
+                    lab.innerHTML = str;
                 }
             }
         </script>
         <style>
-            p {
+            span#c {
                 text-align: center;
                 font-family: Helvetica;
                 font-size: 26px;
                 color: #636363
             }
-            input#b {
+            span#a{
+                text-align: center;
+            }
+            input {
                 padding: 10px 24px;
                 border-radius: 8px;
                 font-family: Helvetica;
@@ -44,6 +39,7 @@
                 border: none;
                 text-decoration: none;
                 display: inline-block;
+                text-align: center;
                 
             }
 
@@ -51,8 +47,10 @@
     </head>
     <body onload="check()">
         <form action="">
-            <p id="c">LABEL</p>
-            <p><input class="MyButton" id="b" type="button" value="Request" onclick="hit()"></p>
+            <span id="a">
+                <span id="c" style="white-space: pre-line">Output.</span>
+                <p><input id="b1" type="button" value="Request" onclick="hit()"/></p>
+            </span>
         </form>
     </body>
 </html>
