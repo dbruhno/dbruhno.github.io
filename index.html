@@ -3,7 +3,7 @@
         <title>check</title>
         <script>
             function hit() {
-                window.open("callback:getCommonParams?func=webviewFuncName")
+                window.location.href = "callback:getCommonParams?func=webviewFuncName";
             }
             function webviewFuncName (result) {
                 var lab = document.getElementById("c")
