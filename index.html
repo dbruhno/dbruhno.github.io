@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>check</title>
+        <script>
+            function hit() {
+                window.open("callback:getCommonParams?func=webviewFuncName")
+            }
+            function webviewFuncName (result) {
+                var lab = document.getElementById("c")
+                if (result == null){
+                    lab.innerHTML = "Got it!";
+                }
+                else {
+                    lab.innerHTML = result;
+                }
+            }
+            function paramForName(sParam) {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++)
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam)
+                    {
+                        return sParameterName[1];
+                    }
+                }
+            }
+        </script>
+        <style>
+            p {
+                text-align: center;
+                font-family: Helvetica;
+                font-size: 26px;
+                color: #636363
+            }
+            input#b {
+                padding: 10px 24px;
+                border-radius: 8px;
+                font-family: Helvetica;
+                font-size: 24px;
+                background-color: #008CBA;
+                color: white;
+                border: none;
+                text-decoration: none;
+                display: inline-block;
+                
+            }
+
+        </style>
+    </head>
+    <body onload="check()">
+        <form action="">
+            <p id="c">LABEL</p>
+            <p><input class="MyButton" id="b" type="button" value="Request" onclick="hit()"></p>
+        </form>
+    </body>
+</html>
