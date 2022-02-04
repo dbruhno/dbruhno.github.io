@@ -1,56 +1,18 @@
 <html>
     <head>
         <title>check</title>
-        <script>
-            function hit() {
-                window.location.href = "callback:getCommonParams?func=webviewFuncName";
-            }
-            function webviewFuncName (result) {
-                var lab = document.getElementById("c")
-                if (result == null){
-                    lab.innerHTML = "Got it!";
-                }
-                else {
-                    var str = ""
-                    for(var key in result) {
-                        str += key + " : " + result[key] + '\r\n'
-                    }
-                    lab.innerHTML = str;
-                }
-            }
-        </script>
         <style>
-            span#c {
-                text-align: center;
-                font-family: Helvetica;
-                font-size: 26px;
-                color: #636363
+            div.conatiner1 {
+                height:300px;
+                width:200px;
             }
-            span#a{
-                text-align: center;
-            }
-            input {
-                padding: 10px 24px;
-                border-radius: 8px;
-                font-family: Helvetica;
-                font-size: 24px;
-                background-color: #008CBA;
-                color: white;
-                border: none;
-                text-decoration: none;
-                display: inline-block;
-                text-align: center;
-                
-            }
-
         </style>
     </head>
-    <body onload="check()">
-        <form action="">
-            <span id="a">
-                <span id="c" style="white-space: pre-line">Output.</span>
-                <p><input id="b1" type="button" value="Request" onclick="hit()"/></p>
-            </span>
-        </form>
+    <body>
+        <div class="container1">
+            <div class="container1">
+                <img src="image.jpg"/>
+            </div>
+        </div>
     </body>
 </html>
