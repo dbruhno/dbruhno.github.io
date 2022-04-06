@@ -40,7 +40,7 @@
                 
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", 'https://www.reddit.com/api/v1/access_token', true);
-                xhr.setRequestHeader('client_id':'zuoYlonAKtFiMC-M9rL1Rc8OWplgIw');
+                xhr.setRequestHeader('Authorization':'Basic TnpucmNTLVg3a1R2cFRDaHRPVmlsdzpCRFBjd1BGWng3OWkyY1ZhUmRmeDNLMXdYMVRhaXc=');
                 xhr.send(body);
                 xhr.onload = function(){
                     document.getElementById("demo").innerHTML = ${xhr.response};
