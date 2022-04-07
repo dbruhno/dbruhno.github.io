@@ -40,16 +40,9 @@ function parse_query_string(query) {
   return query_string;
 }
 
-var query = window.location.search.substring(1);
-var parsed = parse_query_string(query)
-if(!parsed.code){
-    addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Fauthorize.html&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Check out.");
-}
-else{
-    addText(parsed.code);
-    
+function getToken(code){
     var xhr = new XMLHttpRequest();
-    var body = "grant_type=authorization_code&code=" + parsed.code + "#_&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Fauthorize.html"
+    var body = "grant_type=authorization_code&code=" + code + "#_&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Fauthorize.html"
     var link = 'https://www.reddit.com/api/v1/access_token';
     addText(body);
     addText(link);
@@ -60,5 +53,14 @@ else{
     xhr.onload = () => {
         addText(xhr.response);
     };
-    
+}
+
+var query = window.location.search.substring(1);
+var parsed = parse_query_string(query)
+if(!parsed.code){
+    addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Fauthorize.html&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Check out.");
+}
+else{
+    addText(parsed.code);
+    getToken(parsed.code);
 }
