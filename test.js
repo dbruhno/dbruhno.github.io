@@ -42,7 +42,7 @@ function parse_query_string(query) {
 
 function getToken(code){
     var xhr = new XMLHttpRequest();
-    var body = "grant_type=authorization_code&code=" + code + "#_&redirect_uri=https%3A%2F%2Fdbruhno.github.io";
+    var body = "grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fdbruhno.github.io";
     var link = 'https://www.reddit.com/api/v1/access_token';
     addText(body);
     addText(link);
