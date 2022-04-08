@@ -44,14 +44,23 @@ function getToken(code){
     var xhr = new XMLHttpRequest();
     var body = "grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fdbruhno.github.io";
     var link = 'https://www.reddit.com/api/v1/access_token';
-    addText(body);
-    addText(link);
     xhr.open("POST", link, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader('Authorization','Basic TnpucmNTLVg3a1R2cFRDaHRPVmlsdzpCRFBjd1BGWng3OWkyY1ZhUmRmeDNLMXdYMVRhaXc=');
     xhr.send(body);
     xhr.onload = () => {
         addText(xhr.response);
+        var obj = JSON.parse(xhr.response);
+        if(!obj.error) {
+            addText("Access toke: " + obj.access_token);
+            addText("Type: " + obj.token_type);
+            addText("Expire in: " + obj.expires_in);
+            addText("Refresh token: " + obj.refresh_token);
+            addText("Scope: " + obj.scope);
+        }
+        else {
+            addText("Error: " + obj.error);
+        }
     };
 }
 
@@ -61,6 +70,5 @@ if(!parsed.code){
     addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Check out.");
 }
 else{
-    addText(parsed.code);
     getToken(parsed.code);
 }

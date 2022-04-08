@@ -1,3 +1,23 @@
+function addText(txt){
+    var h1 = document.createElement("H1");
+    h1.textContent = txt;
+    var el = document.getElementById("myDiv");
+    el.appendChild(h1);
+}
+
+function addLink(link, txt){
+    var a = document.createElement('a');
+    var linkText = document.createTextNode(txt);
+    a.title = txt;
+    a.appendChild(linkText);
+    a.href = link;
+    var h1 = document.createElement("H1");
+    h1.appendChild(a);
+    var el = document.getElementById("myDiv");
+    el.appendChild(h1);
+
+}
+
 function parse_query_string(query) {
   var vars = query.split("&");
   var query_string = {};
@@ -20,19 +40,13 @@ function parse_query_string(query) {
   return query_string;
 }
 
-function addText(txt, tag){
-    var tag = document.createElement("p");
-    var text = document.createTextNode(txt);
-    tag.appendChild(text);
-    var element = document.getElementById(tag);
-    element.appendChild(tag);
-}
-
-var query = window.location.search.substring(1);
-var parsed = parse_query_string(query)
-if(!parsed.code){
-    addText("No code");
-}
-else{
-    addText(parsed.code);
-}
+var d = new Date();
+addText("Check cookies.");
+var v = "code=CODE1; expires=" + d.toGMTString() + "; path=/;";
+addText("Src: " + v);
+document.cookie = v;
+let allCookies = document.cookie;
+addText("Rst: " + allCookies);
+var total = "Saved: " + allCookies.length + " symbols.";
+addText(total);
+addText("Test complete.");
