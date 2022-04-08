@@ -49,7 +49,6 @@ function getToken(code){
     xhr.setRequestHeader('Authorization','Basic TnpucmNTLVg3a1R2cFRDaHRPVmlsdzpCRFBjd1BGWng3OWkyY1ZhUmRmeDNLMXdYMVRhaXc=');
     xhr.send(body);
     xhr.onload = () => {
-        addText(xhr.response);
         var obj = JSON.parse(xhr.response);
         if(!obj.error) {
             addText("Access toke: " + obj.access_token);
