@@ -63,11 +63,19 @@ function getToken(code){
     };
 }
 
+function dumpQuery(query) {
+    for (const [key, value]  of Object.entries(query)) {
+        addText(key + " : " + value)
+    }
+}
+
 var query = window.location.search.substring(1);
 var parsed = parse_query_string(query)
 if(!parsed.code){
-    addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Check out.");
+//    addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Check out.");
+    addLink("https://appleid.apple.com/auth/authorize?response_type=code&client_id=com.informelab.toonme&dbruhno.github.io")
 }
 else{
-    getToken(parsed.code);
+//    getToken(parsed.code);
+    dumpQuery(parsed)
 }
