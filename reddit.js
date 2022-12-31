@@ -34,7 +34,7 @@ function getToken(code){
             addText("Expire in: " + obj.expires_in);
             addText("Refresh token: " + obj.refresh_token);
             addText("Scope: " + obj.scope);
-            
+
             setCookie('AcceessToken', obj.access_token, 100);
             setCookie('ExpireIn', obj.expires_in, 100);
             setCookie('RefreshToken', obj.refresh_token, 100);
@@ -85,8 +85,9 @@ else {
   addText('Code: ' + code);
 }
 
-var token = getCookie('AcceessToken');
+let token = getCookie('AcceessToken');
 let expire = getCookie('ExpireIn');
+let refresh = getCookie('RefreshToken');
 
 if (token != '') {
   addText('Token: ' + token);
@@ -96,5 +97,8 @@ else {
 }
 if (expire != '') {
   addText('Expire in: ' + expire);
+}
+if (refresh != '') {
+  addText('Refresh: ' + refresh);
 }
 addLink("https://www.reddit.com/api/v1/authorize?client_id=NznrcS-X7kTvpTChtOVilw&response_type=code&state=hello&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Freddit.html&duration=permanent&scope=identity,read,mysubreddits,wikiread", "Refresh token.");
