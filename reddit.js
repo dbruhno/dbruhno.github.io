@@ -18,6 +18,7 @@ function addLink(link, txt){
 }
 
 function getToken(code){
+  addText('Obtain token.');
     var xhr = new XMLHttpRequest();
     var body = "grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fdbruhno.github.io%2Freddit.html";
     var link = 'https://www.reddit.com/api/v1/access_token';
@@ -28,16 +29,16 @@ function getToken(code){
     xhr.onload = () => {
         var obj = JSON.parse(xhr.response);
         if(!obj.error) {
-            setCookie('AcceessToken', obj.access_token, 100);
-            setCookie('ExpireIn', obj,expires_in, 100);
-            setCookie('RefreshToken', obj.refresh_token, 100);
-            setCookie('Scope', obj.scope, 100);
-
             addText("Access token: " + obj.access_token);
             addText("Type: " + obj.token_type);
             addText("Expire in: " + obj.expires_in);
             addText("Refresh token: " + obj.refresh_token);
             addText("Scope: " + obj.scope);
+            
+            setCookie('AcceessToken', obj.access_token, 100);
+            setCookie('ExpireIn', obj.expires_in, 100);
+            setCookie('RefreshToken', obj.refresh_token, 100);
+            setCookie('Scope', obj.scope, 100);
         }
         else {
             addText("Error: " + obj.error);
@@ -77,7 +78,11 @@ function getCookie(cname) {
 var params = new URL(window.location.toLocaleString()).searchParams;
 var code = params.get('code');
 if (code != null){
+  addText('Code: ' + code);
   getToken(code);
+}
+else {
+  addText('Code: ' + code);
 }
 
 var token = getCookie('AcceessToken');
